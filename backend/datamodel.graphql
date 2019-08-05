@@ -1,6 +1,22 @@
-
 type User {
   id: ID! @id
   name: String!
   email: String!
+  userName: String!
+  favoriteTeam: String!
+}
+
+type Tournament {
+  id: ID! @id
+  name: String!
+  members: [User]
+  password: String!
+  rounds: Float!
+  teams: [Team]
+}
+
+type Team {
+  id: ID! @id
+  name: String!
+  seed: Float!
 }
