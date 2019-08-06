@@ -1,20 +1,25 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import Layout from './src/screens/Layout';
 
 const HomeScreen = props => (
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Text>Home Screen</Text>
-    <Button title="Go to Details" onPress={() => props.navigation.navigate('Details')} />
-    <Button title="Go back" onPress={() => props.navigation.goBack()} />
+    <Layout>
+      <Text>Home Screen</Text>
+      <Button title="Go to Details" onPress={() => props.navigation.navigate('Details')} />
+      <Button title="Go back" onPress={() => props.navigation.goBack()} />
+    </Layout>
   </View>
 );
 
 const DetailsScreen = props => (
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Text>Details Screen</Text>
-    <Button title="Go to Home" onPress={() => props.navigation.navigate('Home')} />
-    <Button title="Go back" onPress={() => props.navigation.goBack()} />
+    <Layout>
+      <Text>Details Screen</Text>
+      <Button title="Go to Home" onPress={() => props.navigation.navigate('Home')} />
+      <Button title="Go back" onPress={() => props.navigation.goBack()} />
+    </Layout>
   </View>
 );
 
