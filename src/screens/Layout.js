@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text } from 'native-base';
+import { Container, Header, Content } from 'native-base';
+import { withNavigation } from 'react-navigation';
+import AppHeader from '../components/Header';
 
 const Layout = props => (
-  <View>
-    {props.children}
-    <Text>Hi</Text>
-  </View>
+  <Container>
+    <AppHeader title={props.title} />
+    <Content>{props.children}</Content>
+  </Container>
 );
 
-export default Layout;
+export default withNavigation(Layout);

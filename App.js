@@ -1,36 +1,55 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
-import Layout from './src/screens/Layout';
+import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import HomeScreen from './src/screens/HomeScreen';
+import PoolsScreen from './src/screens/PoolsScreen';
+import StandingsScreen from './src/screens/StandingsScreen';
+import ProfileScreen from './src/screens/ProfileScreen';
 
-const HomeScreen = props => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Layout>
-      <Text>Home Screen</Text>
-      <Button title="Go to Details" onPress={() => props.navigation.navigate('Details')} />
-      <Button title="Go back" onPress={() => props.navigation.goBack()} />
-    </Layout>
-  </View>
-);
-
-const DetailsScreen = props => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Layout>
-      <Text>Details Screen</Text>
-      <Button title="Go to Home" onPress={() => props.navigation.navigate('Home')} />
-      <Button title="Go back" onPress={() => props.navigation.goBack()} />
-    </Layout>
-  </View>
-);
-
-const AppNavigator = createStackNavigator(
+const TabNavigator = createBottomTabNavigator(
   {
-    Home: HomeScreen,
-    Details: DetailsScreen,
+    Home: {
+      screen: HomeScreen,
+      navigationOptions: {
+        tabBarLabel: 'Home',
+        tabBarIcon: ({ tintColor }) => <Icon name="home" size={20} color={tintColor} />,
+      },
+    },
+    Pools: {
+      screen: PoolsScreen,
+      navigationOptions: {
+        tabBarLabel: 'Pools',
+        tabBarIcon: ({ tintColor }) => <Icon name="basketball" size={20} color={tintColor} />,
+      },
+    },
+    Standing: {
+      screen: StandingsScreen,
+      navigationOptions: {
+        tabBarLabel: 'Standings',
+        tabBarIcon: ({ tintColor }) => <Icon name="format-list-numbered" size={20} color={tintColor} />,
+      },
+    },
+    Profile: {
+      screen: ProfileScreen,
+      navigationOptions: {
+        tabBarLabel: 'Profile',
+        tabBarIcon: ({ tintColor }) => <Icon name="account" size={20} color={tintColor} />,
+        style: {
+          backgroundColor: '#171f33',
+        },
+      },
+    },
   },
   {
-    initialRouteName: 'Details',
+    initialRouteName: 'Home',
+    tabBarOptions: {
+      activeTintColor: '#F8F8F8', // active icon color
+      inactiveTintColor: '#586589', // inactive icon color
+      style: {
+        backgroundColor: '#171F33', // TabBar background
+      },
+    },
   }
 );
 
-export default createAppContainer(AppNavigator);
+export default createAppContainer(TabNavigator);
