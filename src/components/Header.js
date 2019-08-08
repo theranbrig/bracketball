@@ -5,9 +5,9 @@ import { withNavigation } from 'react-navigation';
 const AppHeader = props => (
   <Header style={{ backgroundColor: '#171f33' }} iosBarStyle="light-content">
     <Left>
-      <Button style={{ backgroundColor: '#171f33' }} onPress={() => props.navigation.goBack()}>
+      {/* <Button style={{ backgroundColor: '#171f33' }} onPress={() => props.navigation.goBack()}>
         <Icon style={{ color: '#f8f8f8' }} type="FontAwesome5" name="chevron-left" />
-      </Button>
+      </Button> */}
     </Left>
     <Body style={{ textAlign: 'center' }}>
       <Title style={{ color: '#f8f8f8' }}>{props.title}</Title>
