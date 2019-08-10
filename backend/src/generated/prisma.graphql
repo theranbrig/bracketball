@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/theranbrigowatz/bracketball-backend/dev
-# timestamp: Thu Aug 08 2019 13:00:21 GMT+0900 (Korean Standard Time)
+# timestamp: Sat Aug 10 2019 21:00:08 GMT+0900 (Korean Standard Time)
 
 type AggregateTeam {
   count: Int!
@@ -100,6 +100,10 @@ type Team implements Node {
   id: ID!
   name: String!
   seed: Float!
+  wins: Float!
+  draftBonus: Float!
+  seedDraftBonus: Float!
+  blindPoints: Float
 }
 
 """A connection to a list of items."""
@@ -116,6 +120,10 @@ input TeamCreateInput {
   id: ID
   name: String!
   seed: Float!
+  wins: Float!
+  draftBonus: Float!
+  seedDraftBonus: Float!
+  blindPoints: Float
 }
 
 input TeamCreateManyInput {
@@ -139,12 +147,24 @@ enum TeamOrderByInput {
   name_DESC
   seed_ASC
   seed_DESC
+  wins_ASC
+  wins_DESC
+  draftBonus_ASC
+  draftBonus_DESC
+  seedDraftBonus_ASC
+  seedDraftBonus_DESC
+  blindPoints_ASC
+  blindPoints_DESC
 }
 
 type TeamPreviousValues {
   id: ID!
   name: String!
   seed: Float!
+  wins: Float!
+  draftBonus: Float!
+  seedDraftBonus: Float!
+  blindPoints: Float
 }
 
 input TeamScalarWhereInput {
@@ -258,6 +278,94 @@ input TeamScalarWhereInput {
 
   """All values greater than or equal the given value."""
   seed_gte: Float
+  wins: Float
+
+  """All values that are not equal to given value."""
+  wins_not: Float
+
+  """All values that are contained in given list."""
+  wins_in: [Float!]
+
+  """All values that are not contained in given list."""
+  wins_not_in: [Float!]
+
+  """All values less than the given value."""
+  wins_lt: Float
+
+  """All values less than or equal the given value."""
+  wins_lte: Float
+
+  """All values greater than the given value."""
+  wins_gt: Float
+
+  """All values greater than or equal the given value."""
+  wins_gte: Float
+  draftBonus: Float
+
+  """All values that are not equal to given value."""
+  draftBonus_not: Float
+
+  """All values that are contained in given list."""
+  draftBonus_in: [Float!]
+
+  """All values that are not contained in given list."""
+  draftBonus_not_in: [Float!]
+
+  """All values less than the given value."""
+  draftBonus_lt: Float
+
+  """All values less than or equal the given value."""
+  draftBonus_lte: Float
+
+  """All values greater than the given value."""
+  draftBonus_gt: Float
+
+  """All values greater than or equal the given value."""
+  draftBonus_gte: Float
+  seedDraftBonus: Float
+
+  """All values that are not equal to given value."""
+  seedDraftBonus_not: Float
+
+  """All values that are contained in given list."""
+  seedDraftBonus_in: [Float!]
+
+  """All values that are not contained in given list."""
+  seedDraftBonus_not_in: [Float!]
+
+  """All values less than the given value."""
+  seedDraftBonus_lt: Float
+
+  """All values less than or equal the given value."""
+  seedDraftBonus_lte: Float
+
+  """All values greater than the given value."""
+  seedDraftBonus_gt: Float
+
+  """All values greater than or equal the given value."""
+  seedDraftBonus_gte: Float
+  blindPoints: Float
+
+  """All values that are not equal to given value."""
+  blindPoints_not: Float
+
+  """All values that are contained in given list."""
+  blindPoints_in: [Float!]
+
+  """All values that are not contained in given list."""
+  blindPoints_not_in: [Float!]
+
+  """All values less than the given value."""
+  blindPoints_lt: Float
+
+  """All values less than or equal the given value."""
+  blindPoints_lte: Float
+
+  """All values greater than the given value."""
+  blindPoints_gt: Float
+
+  """All values greater than or equal the given value."""
+  blindPoints_gte: Float
 }
 
 type TeamSubscriptionPayload {
@@ -302,16 +410,28 @@ input TeamSubscriptionWhereInput {
 input TeamUpdateDataInput {
   name: String
   seed: Float
+  wins: Float
+  draftBonus: Float
+  seedDraftBonus: Float
+  blindPoints: Float
 }
 
 input TeamUpdateInput {
   name: String
   seed: Float
+  wins: Float
+  draftBonus: Float
+  seedDraftBonus: Float
+  blindPoints: Float
 }
 
 input TeamUpdateManyDataInput {
   name: String
   seed: Float
+  wins: Float
+  draftBonus: Float
+  seedDraftBonus: Float
+  blindPoints: Float
 }
 
 input TeamUpdateManyInput {
@@ -329,6 +449,10 @@ input TeamUpdateManyInput {
 input TeamUpdateManyMutationInput {
   name: String
   seed: Float
+  wins: Float
+  draftBonus: Float
+  seedDraftBonus: Float
+  blindPoints: Float
 }
 
 input TeamUpdateManyWithWhereNestedInput {
@@ -458,6 +582,94 @@ input TeamWhereInput {
 
   """All values greater than or equal the given value."""
   seed_gte: Float
+  wins: Float
+
+  """All values that are not equal to given value."""
+  wins_not: Float
+
+  """All values that are contained in given list."""
+  wins_in: [Float!]
+
+  """All values that are not contained in given list."""
+  wins_not_in: [Float!]
+
+  """All values less than the given value."""
+  wins_lt: Float
+
+  """All values less than or equal the given value."""
+  wins_lte: Float
+
+  """All values greater than the given value."""
+  wins_gt: Float
+
+  """All values greater than or equal the given value."""
+  wins_gte: Float
+  draftBonus: Float
+
+  """All values that are not equal to given value."""
+  draftBonus_not: Float
+
+  """All values that are contained in given list."""
+  draftBonus_in: [Float!]
+
+  """All values that are not contained in given list."""
+  draftBonus_not_in: [Float!]
+
+  """All values less than the given value."""
+  draftBonus_lt: Float
+
+  """All values less than or equal the given value."""
+  draftBonus_lte: Float
+
+  """All values greater than the given value."""
+  draftBonus_gt: Float
+
+  """All values greater than or equal the given value."""
+  draftBonus_gte: Float
+  seedDraftBonus: Float
+
+  """All values that are not equal to given value."""
+  seedDraftBonus_not: Float
+
+  """All values that are contained in given list."""
+  seedDraftBonus_in: [Float!]
+
+  """All values that are not contained in given list."""
+  seedDraftBonus_not_in: [Float!]
+
+  """All values less than the given value."""
+  seedDraftBonus_lt: Float
+
+  """All values less than or equal the given value."""
+  seedDraftBonus_lte: Float
+
+  """All values greater than the given value."""
+  seedDraftBonus_gt: Float
+
+  """All values greater than or equal the given value."""
+  seedDraftBonus_gte: Float
+  blindPoints: Float
+
+  """All values that are not equal to given value."""
+  blindPoints_not: Float
+
+  """All values that are contained in given list."""
+  blindPoints_in: [Float!]
+
+  """All values that are not contained in given list."""
+  blindPoints_not_in: [Float!]
+
+  """All values less than the given value."""
+  blindPoints_lt: Float
+
+  """All values less than or equal the given value."""
+  blindPoints_lte: Float
+
+  """All values greater than the given value."""
+  blindPoints_gt: Float
+
+  """All values greater than or equal the given value."""
+  blindPoints_gte: Float
 }
 
 input TeamWhereUniqueInput {
