@@ -35,10 +35,16 @@ const PreTournamentRoutes = createStackNavigator({
   CreateTournament: {
     screen: CreateTournamentScreen,
     title: 'Create A Pool',
+    navigationOptions: ({ navigation }) => ({
+      title: `New Pool`,
+    }),
   },
   WaitTournament: {
     screen: WaitingTournamentScreen,
     title: 'Pool Waiting Room',
+    navigationOptions: ({ navigation }) => ({
+      title: `Waiting Room`,
+    }),
   },
 });
 
