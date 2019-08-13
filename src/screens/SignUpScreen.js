@@ -16,7 +16,7 @@ const SIGNUP_MUTATION = gql`
 `;
 
 const SignUpPage = () => {
-  const [userName, setUserName] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
 
@@ -32,28 +32,29 @@ const SignUpPage = () => {
               <Input
                 keyboardType="email-address"
                 value={email}
-                onChange={email => setEmail(email)}
+                onChange={e => setEmail(e.target.value)}
                 textContentType="emailAddress"
                 autoCapitalize="none"
               />
             </Item>
             <Item floatingLabel>
               <Label>Username</Label>
-              <Input type="text" value={userName} onChange={userName => setUserName(userName)} autoCapitalize="none" />
+              <Input type="text" value={username} onChange={e => setUsername(e.target.value)} autoCapitalize="none" />
             </Item>
             <Item floatingLabel last>
               <Label>Password</Label>
               <Input
                 value={password}
-                onChange={password => setPassword(password)}
+                onChange={e => setPassword(e.target.value)}
                 secureTextEntry={true}
                 textContentType="password"
                 autoCapitalize="none"
               />
             </Item>
             <Button
+              type="submit"
               onPress={() => {
-                signup({ variables: { email: email, userName: userName, password: password } });
+                signup({ variables: { email: email, username: username, password: password } });
                 console.log(data);
               }}
             >
