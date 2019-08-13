@@ -12,6 +12,7 @@ const Mutations = {
     if (nameCheck) throw new Error(`${args.username} already exists.  Please choose a new user name.`);
     // Set password hash and user info
     const password = await bcrypt.hash(args.password, 15);
+    console.log(password);
     const user = await ctx.db.mutation.createUser(
       {
         data: {
@@ -23,6 +24,7 @@ const Mutations = {
       },
       info
     );
+    console.log(user);
     // Create JWT and set as cookie
     const token = await jwt.sign({ userId: user.id }, process.env.APP_SECRET);
     ctx.response.cookie('token', token, {

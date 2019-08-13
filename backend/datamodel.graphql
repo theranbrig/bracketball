@@ -1,9 +1,17 @@
+enum Permission {
+  ADMIN
+  USER
+}
+
 type User {
   id: ID! @id
-  name: String!
-  email: String!
+  email: String! @unique
+  username: String! @unique
   password: String!
-  userName: String!
+  resetToken: String
+  resetTokenExpiry: Float
+  token: String
+  permissions: [Permission] @scalarList(strategy: RELATION)
 }
 
 type Tournament {
