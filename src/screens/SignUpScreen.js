@@ -15,7 +15,7 @@ const SIGNUP_MUTATION = gql`
   }
 `;
 
-const SignUpPage = () => {
+const SignUpScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -66,4 +66,4 @@ const SignUpPage = () => {
     </Layout>
   );
 };
-export default SignUpPage;
+export default SignUpScreen;
